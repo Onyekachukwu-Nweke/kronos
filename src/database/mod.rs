@@ -1,1 +1,1 @@
-mod sqlite;
+pub mod sqlite;

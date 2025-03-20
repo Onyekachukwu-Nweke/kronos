@@ -1,1 +1,1 @@
-mod compression;
+pub mod compression;

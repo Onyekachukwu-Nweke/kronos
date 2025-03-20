@@ -1,1 +1,1 @@
-mod performer;
+pub mod performer;

@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use commands::backup::run_backup;
 use config::Config;
 use error::Result;
 use logger::init_logger;
