@@ -33,14 +33,20 @@ enum Commands {
 }
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<()> {
+    // Initialize logging
     init_logger();
     info!("Starting kroncli");
+
     let cli = Cli::parse();
 
     match cli.command {
         Commands::Backup { config } => {
-            let cfg = Config::load(&config)?;
+            let cfg = Config::load(&config).unwrap();
+            run_backup(&cfg).await?;
         }
     }
+
+    info!("kroncli completed successfully");
+    Ok(())
 }
