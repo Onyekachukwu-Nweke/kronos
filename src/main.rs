@@ -1,10 +1,12 @@
 use clap::{Parser, Subcommand};
 use config::Config;
 use error::Result;
+use logger::init_logger;
 use log::info;
 
 mod config;
 mod error;
+mod logger;
 
 #[derive(Parser)]
 #[clap(name = "kroncli", about = "A database backup utility")]
@@ -26,6 +28,7 @@ enum Commands {
 
 #[tokio::main]
 async fn main() {
+    init_logger();
     info!("Starting kroncli");
     let cli = Cli::parse();
 
