@@ -10,3 +10,7 @@ clap = { version = "4.5.32", features = ["derive"] }
 tokio = { version = "1.44.1", features = ["rt", "rt-multi-thread", "macros"] }
 log = "0.4.26"
 env_logger = "0.11.7"
+chrono = "0.4.40"
+tempfile = "3.19.1"
+flate2 = "1.1.0"
+tar = "0.4.44"
