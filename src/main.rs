@@ -10,6 +10,8 @@ mod logger;
 mod commands;
 mod utils;
 mod storage;
+mod backup;
+mod database;
 
 #[derive(Parser)]
 #[clap(name = "kroncli", about = "A database backup utility")]
