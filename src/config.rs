@@ -12,10 +12,10 @@ pub struct Config {
 
 #[derive(Deserialize, Debug)]
 pub struct Databases {
-    pub mysql: Option<Vec<DatabaseConfig>>,
-    pub postgres: Option<Vec<DatabaseConfig>>,
-    pub sqlite: Option<Vec<DatabaseConfig>>,
-    pub mongodb: Option<Vec<DatabaseConfig>>,
+    pub mysql: Option<DatabaseConfig>,
+    pub postgres: Option<DatabaseConfig>,
+    pub sqlite: Option<DatabaseConfig>,
+    pub mongodb: Option<DatabaseConfig>,
 }
 
 #[derive(Deserialize, Debug, Clone)]

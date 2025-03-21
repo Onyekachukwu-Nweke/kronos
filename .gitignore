@@ -1,2 +1,5 @@
 .idea
 /target
+/test_dbs
+/backups
+kronos

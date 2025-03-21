@@ -28,8 +28,8 @@ enum Commands {
         #[clap(long, default_value = "config.toml")]
         config: String,
     },
-    /// Start the scheduler for automatic backups (Incoming Features)
-    /// Restore from a backup (Incoming Features)
+    // Start the scheduler for automatic backups (Incoming Features)
+    // Restore from a backup (Incoming Features)
 }
 
 #[tokio::main]
@@ -42,7 +42,7 @@ async fn main() -> Result<()> {
 
     match cli.command {
         Commands::Backup { config } => {
-            let cfg = Config::load(&config).unwrap();
+            let cfg = Config::load(&config)?;
             run_backup(&cfg).await?;
         }
     }

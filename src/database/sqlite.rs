@@ -40,14 +40,16 @@ impl<'a> SQLiteDatabase<'a> {
             let mut dest_conn = Connection::open(&dest_path)
                 .map_err(|e| Error::Database(format!("Failed to open destination SQLite DB: {}", e)))?;
 
-            // Perform backup using SQLite Online Backup API
-            let mut backup = Backup::new(&source_conn, &mut dest_conn)
-                .map_err(|e| Error::Database(format!("Failed to initialize backup: {}", e)))?;
+            // Perform backup within a scope to drop `backup` before closing connections
+            {
+                let mut backup = Backup::new(&source_conn, &mut dest_conn)
+                    .map_err(|e| Error::Database(format!("Failed to initialize backup: {}", e)))?;
 
-            backup.run_to_completion(-1, Duration::from_millis(1000), None) // -1 for full backup, 1000ms sleep between steps
-                .map_err(|e| Error::Database(format!("Failed to execute backup: {}", e)))?;
+                backup.run_to_completion(10, Duration::from_millis(1000), None) // -1 for full backup, 1000ms sleep between steps
+                    .map_err(|e| Error::Database(format!("Failed to execute backup: {}", e)))?;
+            } // `backup` is dropped here, ending the borrow
 
-            // Close connections explicitly
+            // Now safe to close connections
             source_conn.close()
                 .map_err(|(_, e)| Error::Database(format!("Failed to close source connection: {}", e)))?;
             dest_conn.close()
