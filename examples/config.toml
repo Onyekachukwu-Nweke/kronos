@@ -1,0 +1,10 @@
+[databases.sqlite]
+host = "/home/onyeka/Documents/Projects/kronos/test_dbs"
+port = 0
+user = ""
+password = ""
+databases = ["test.db"]
+
+[storage]
+type_ = "local"
+path = "/home/onyeka/Documents/Projects/kronos/backups"
