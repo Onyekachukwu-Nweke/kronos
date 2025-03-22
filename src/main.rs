@@ -15,7 +15,7 @@ mod backup;
 mod database;
 
 #[derive(Parser)]
-#[clap(name = "kroncli", about = "A database backup utility")]
+#[clap(name = "kronos", about = "A database backup utility")]
 struct Cli {
     #[clap(subcommand)]
     command: Commands,
@@ -36,7 +36,7 @@ enum Commands {
 async fn main() -> Result<()> {
     // Initialize logging
     init_logger();
-    info!("Starting kroncli");
+    info!("Starting kronos");
 
     let cli = Cli::parse();
 
@@ -47,6 +47,6 @@ async fn main() -> Result<()> {
         }
     }
 
-    info!("kroncli completed successfully");
+    info!("kronos completed successfully");
     Ok(())
 }
