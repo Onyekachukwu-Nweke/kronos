@@ -1,0 +1,44 @@
+# Example configuration showing all supported database types
+# Only configure the database types you need
+
+[databases.sqlite]
+host = "/home/user/databases"  # Directory containing SQLite database files
+port = 0                      # Not used for SQLite
+user = ""                     # Not used for SQLite
+password = ""                 # Not used for SQLite
+databases = ["app.db", "users.db"]  # List of database filenames to backup
+
+[databases.mysql]
+host = "localhost"
+port = 3306
+user = "backup_user"
+password = "backup_password"
+databases = ["production_db", "analytics_db"]  # List of database names to backup
+
+[databases.postgres]
+host = "localhost"
+port = 5432
+user = "postgres"
+password = "postgres_password"
+databases = ["main_db", "logs_db"]  # List of database names to backup
+
+[databases.mongodb]
+host = "localhost"
+port = 27017
+user = "admin"
+password = "mongo_password"
+databases = ["app_data", "user_sessions"]  # List of database names to backup
+
+# Optional: Scheduling configuration (future feature)
+[schedule]
+cron = "0 2 * * *"  # Daily at 2 AM
+
+# Storage configuration
+[storage]
+type_ = "local"
+path = "/home/user/backups"  # Local storage path
+# For S3 storage (future feature):
+# bucket = "my-backup-bucket"
+# region = "us-west-2"
+# access_key = "ACCESS_KEY"
+# secret_key = "SECRET_KEY"

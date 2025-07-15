@@ -15,7 +15,7 @@ mod backup;
 mod database;
 
 #[derive(Parser)]
-#[clap(name = "kronos", about = "A database backup utility")]
+#[clap(name = "kronos", about = "A database backup utility tool")]
 struct Cli {
     #[clap(subcommand)]
     command: Commands,
